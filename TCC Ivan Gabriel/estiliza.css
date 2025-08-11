@@ -3,6 +3,80 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+#corpo_log{
+    background-color: aliceblue;
+    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#corpo_cad{
+    background-color: aliceblue;
+    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 250px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+
+#corpo_log input[type='text']{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+#corpo_log input[type='submit']{
+    background-color: rgb(159, 219, 204);
+    margin-left: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+#corpo_log input[type='submit']:hover{
+    background-color: rgb(110, 223, 82);
+    
+}
+
+#corpo_cad input[type='text']{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+#corpo_cad input[type='submit']{
+    background-color: rgb(159, 219, 204);
+    margin-left: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+#corpo_cad input[type='submit']:hover{
+    background-color: rgb(110, 223, 82);
+    
+}
+
+
+#titulo_log{
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+#titulo_cad{
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+
+
 /* Cabeçalho */
 .header {
     display: flex;
@@ -73,4 +147,5 @@ body {
 
 .header-links a:hover {
     text-decoration: underline;
+
 }
