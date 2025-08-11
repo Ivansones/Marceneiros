@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do usuario</title>
+    <link rel="stylesheet" href="estiliza.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="logo">
+            <div class="logo-text">
+                <strong>Casa da madeira</strong><br>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+
+        <div class="header-links">
+            <a href="pedido.html">Meus Pedidos</a>
+            <a href="#">Fale Conosco</a>
+            <a href="#">Encomendas feitas</a>
+            <button><a href="cadastro.html">Cadastrar</a></button>
+            <button><a href="login.html">Login</a></button>
+        </div>
+    </header>
+    <div id="titulo_log">
+    <p>Realize o login na sua conta:</p>
+    </div>
+    <form action="login.php" method="post">
+        <div id="corpo_log">
+        <input type="text" name="nome" id="nome" required placeholder="Escreva seu nome">
+        <input type="text" name="senha" id="senha" required placeholder="Escreva sua senha">
+        <br>
+        <input type="submit" name="verificar" id="verificar">
+        </div>
+    </form>
+</body>
+</html>
