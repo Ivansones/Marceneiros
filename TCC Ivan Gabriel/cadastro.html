@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro do usuario</title>
+    <link rel="stylesheet" href="estiliza.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="logo">
+            <div class="logo-text">
+                <strong>Casa da madeira</strong><br>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+
+        <div class="header-links">
+            <a href="pedido.html">Meus Pedidos</a>
+            <a href="#">Fale Conosco</a>
+            <a href="#">Encomendas feitas</a>
+            <button><a href="login.html">Login</a></button>
+            <button><a href="home.html">Home</a></button>
+        </div>
+    </header>
+    <div id="titulo_cad">
+    <p>Realize o cadastro da sua conta:</p>
+    </div>
+    <form action="cadastro.php" method="post">
+        <div id="corpo_cad">
+        <input type="text" name="nome" id="nome" required placeholder="Qual é o seu nome">
+        <input type="text" name="senha" id="senha" required placeholder="Qual é a sua senha">
+        <br>
+        <input type="submit" name="cadastrar" id="cadastrar" value="cadastrar">
+        </div>
+    </form>
+</body>
+</html>
