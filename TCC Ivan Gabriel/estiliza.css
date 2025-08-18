@@ -1,248 +1,359 @@
-/* Estilos gerais */
+/* Reset e estilos gerais */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-
-    margin: 0;
-    padding: 0;
-  }
-
-#corpo_log{
-    background-color: aliceblue;
-    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
-    margin: 0 auto;
-    max-width: 250px;
-    border-radius: 5px;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  line-height: 1.6;
 }
 
-#corpo_cad{
-    background-color: aliceblue;
-    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
-    margin: 0 auto;
-    max-width: 250px;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-
-#corpo_log input[type='text']{
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-}
-
-#corpo_log input[type='submit']{
-    background-color: rgb(159, 219, 204);
-    margin-left: 25px;
-    border-radius: 10px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-#corpo_log input[type='submit']:hover{
-    background-color: rgb(110, 223, 82);
-    
-}
-
-#corpo_cad input[type='text']{
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-}
-
-#corpo_cad input[type='submit']{
-    background-color: rgb(159, 219, 204);
-    margin-left: 25px;
-    border-radius: 10px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-#corpo_cad input[type='submit']:hover{
-    background-color: rgb(110, 223, 82);
-    
-}
-
-
-#titulo_log{
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-}
-
-#titulo_cad{
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-}
-
-
-
-
-/* Cabeçalho */
+/* ========== HEADER ========== */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    background-color: #f0f0f0;
-    position: relative;
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-  }
-  
-  .logo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
-  }
-  
-  .logo-text strong {
-    font-size: 18px;
-    display: block;
-  }
-  
-  .logo-text small {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  /* Links no header */
-  .header-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-  }
-  
-  /* Container dos botões de login/cadastro */
-  .button--container {
-    display: flex;
-    gap: 8px;
-  }
-  
-  /* Estilo dos botões como links */
-  .button--container a {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #e69f78; /* Cinza claro */
-    color: white;
-    font-size: 14px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.2s;
-  }
-  
-  .button--container a:active {
-    background-color: #e69f78; /* cinza escuro */
-  }
-  
-  .button--container a:visited {
-    color: white;
-  }
-  
-  /* Conteúdo principal */
-  main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.logo-text strong {
+  font-size: 18px;
+  display: block;
+  color: #2c3e50;
+}
+
+.logo-text small {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: normal;
+}
+
+/* Header direito */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.button--container {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botões do header */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #e69f78;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #d4865f;
+  text-decoration: none;
+}
+
+.btn:active {
+  background-color: #946549;
+}
+
+.bnt {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #34495e;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.bnt:hover {
+  background-color: #2c3e50;
+}
+
+/* ========== FORMULÁRIO ========== */
+#cabecalho {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+#cabecalho .imagem1 img {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#corpo2 {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#formulario {
+  margin-bottom: 40px;
+}
+
+#formulario h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+  border-bottom: 3px solid #e69f78;
+  padding-bottom: 10px;
+}
+
+#formulario h2 {
+  color: #34495e;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#formulario h3 {
+  color: #2c3e50;
+  margin: 30px 0 20px 0;
+  font-size: 20px;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 8px;
+}
+
+/* Inputs do formulário */
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 8px 0 20px 0;
+  border: 2px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+  outline: none;
+  border-color: #e69f78;
+  box-shadow: 0 0 0 3px rgba(230, 159, 120, 0.1);
+}
+
+/* Placeholder personalizado */
+input[type="text"]::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Seção de informações da encomenda */
+div[id="INFORMAÇOES DA ENCOMENDA:"] {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 6px;
+  border-left: 4px solid #e69f78;
+  margin-top: 30px;
+}
+
+/* Botões de ação */
+input[type="submit"],
+input[type="reset"] {
+  padding: 12px 30px;
+  margin: 20px 10px 0 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input[type="submit"] {
+  background-color: #27ae60;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  background-color: #219a52;
+  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+  transform: translateY(-2px);
+}
+
+input[type="reset"] {
+  background-color: #e74c3c;
+  color: white;
+}
+
+input[type="reset"]:hover {
+  background-color: #c0392b;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========== ESTILOS PARA LOGIN E CADASTRO ========== */
+#corpo_log,
+#corpo_cad {
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 320px;
+  border-radius: 8px;
+  padding: 30px;
+  border-top: 4px solid #e69f78;
+}
+
+#titulo_log,
+#titulo_cad {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+#corpo_log input[type='text'],
+#corpo_cad input[type='text'] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 15px 0;
+  border: 2px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#corpo_log input[type='text']:focus,
+#corpo_cad input[type='text']:focus {
+  border-color: #e69f78;
+  outline: none;
+}
+
+#corpo_log input[type='submit'],
+#corpo_cad input[type='submit'] {
+  width: 100%;
+  background-color: #e69f78;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#corpo_log input[type='submit']:hover,
+#corpo_cad input[type='submit']:hover {
+  background-color: #d4865f;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
     padding: 20px;
-    font-size: 16px;
-    line-height: 1.5;
   }
   
-  /* Alinhamento dos itens à direita do header */
   .header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-left: auto;
-  }
-  
-  /* Estilo geral dos botões simulados */
-  .btn {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #e69f78;
-    color: white;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    font-weight: bold;
-  }
-  
-  .btn:active {
-    background-color: #946549;
-  }
-
-
-#corpo_log{
-    background-color: aliceblue;
-    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
-    margin: 0 auto;
-    max-width: 250px;
-    border-radius: 5px;
-    padding: 20px;
-}
-#corpo_cad{
-    background-color: aliceblue;
-    box-shadow: 0 2px 10px rgb(0, 0, 0.2);
-    margin: 0 auto;
-    max-width: 250px;
-    border-radius: 5px;
-    padding: 20px;
-}
-#corpo_log input[type='text']{
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-}
-#corpo_log input[type='submit']{
-    background-color: rgb(159, 219, 204);
-    margin-left: 25px;
-    border-radius: 10px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-#corpo_log input[type='submit']:hover{
-    background-color: rgb(110, 223, 82);
-    
-}
-#corpo_cad input[type='text']{
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-}
-#corpo_cad input[type='submit']{
-    background-color: rgb(159, 219, 204);
-    margin-left: 25px;
-    border-radius: 10px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
-#corpo_cad input[type='submit']:hover{
-    background-color: rgb(110, 223, 82);
-    
-}
-#titulo_log{
     width: 100%;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-}
-#titulo_cad{
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-}
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   
+  #corpo2 {
+    margin: 20px;
+    padding: 15px;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="time"] {
+    max-width: 100%;
+  }
+  
+  #formulario h1 {
+    font-size: 24px;
+  }
+  
+  .button--container {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn,
+  .bnt {
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+  }
+}
 
-.header-links a:hover {
-    text-decoration: underline;
-
+@media (max-width: 480px) {
+  #cabecalho .imagem1 img {
+    width: 150px;
+    height: 112px;
+  }
+  
+  input[type="submit"],
+  input[type="reset"] {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  #corpo_log,
+  #corpo_cad {
+    margin: 20px;
+    padding: 20px;
+  }
 }
