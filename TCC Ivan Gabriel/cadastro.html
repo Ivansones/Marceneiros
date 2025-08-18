@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login do usuario</title>
+    <title>cadastro do usuario</title>
     <link rel="stylesheet" href="estiliza.css">
 </head>
 <body>
@@ -20,19 +20,19 @@
             <a href="pedido.html">Meus Pedidos</a>
             <a href="#">Fale Conosco</a>
             <a href="#">Encomendas feitas</a>
-            <button><a href="cadastro.html">Cadastrar</a></button>
             <button><a href="login.html">Login</a></button>
+            <button><a href="home.html">Home</a></button>
         </div>
     </header>
-    <div id="titulo_log">
-    <p>Realize o login na sua conta:</p>
+    <div id="titulo_cad">
+    <p>Realize o cadastro da sua conta:</p>
     </div>
-    <form action="login.php" method="post">
-        <div id="corpo_log">
-        <input type="text" name="nome" id="nome" required placeholder="Escreva seu nome">
-        <input type="text" name="senha" id="senha" required placeholder="Escreva sua senha">
+    <form action="cadastro.php" method="post">
+        <div id="corpo_cad">
+        <input type="text" name="nome" id="nome" required placeholder="Qual é o seu nome">
+        <input type="text" name="senha" id="senha" required placeholder="Qual é a sua senha">
         <br>
-        <input type="submit" name="verificar" id="verificar">
+        <input type="submit" name="cadastrar" id="cadastrar" value="cadastrar">
         </div>
     </form>
 </body>
