@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco - CASA DA MADEIRA</title>
+    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="estiliza.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo Casa da Madeira">
+            <div class="logo-text">
+                <strong>Casa da Madeira</strong>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <a href="pedido.html" class="btn">Realizar Pedido</a>
+            <a href="home.html" class="btn">Home</a>
+            <a href="encomendas.html" class="btn">Encomendas feitas</a>
+            <a href="login.html" class="btn">Login</a>
+            <a href="#" class="btn">ADM</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <div class="contact-content">
+                <h1>Fale Conosco</h1>
+                <p>Entre em contato conosco pelo WhatsApp! Nossa equipe está pronta para atender você e esclarecer todas as suas dúvidas sobre nossos produtos e serviços.</p>
+                
+                <div class="whatsapp-container">
+                    <button class="whatsapp-btn" onclick="openWhatsApp()">
+                        Falar no WhatsApp
+                    </button>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Outras formas de contato</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-title">Endereço</div>
+                            <div class="info-detail">Nova Veneza, Santa Catarina<br>Brasil</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-title">Horário de Funcionamento</div>
+                            <div class="info-detail">Segunda à Sexta: 8h às 18h<br>Sábado: 8h às 12h</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-title">E-mail</div>
+                            <div class="info-detail">contato@casadamadeira.com.br</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Função com número fixo padrão
+        function openWhatsApp(numero = '5548999999999') {
+            // Mensagem padrão (opcional)
+            const mensagemPadrao = 'Olá! Vim do site da Casa da Madeira e gostaria de mais informações.';
+            const mensagemCodificada = encodeURIComponent(mensagemPadrao);
+            
+            // Monta a URL do WhatsApp
+            const wppUrl = `https://api.whatsapp.com/send?phone=${numero}&text=${mensagemCodificada}`;
+            
+            // Abre o WhatsApp
+            window.open(wppUrl, '_blank');
+        }
+
+        // Versão ainda mais simples - só com link direto
+        function openWhatsAppSimples() {
+            // Substitua 5548999999999 pelo seu número real
+            window.open('https://api.whatsapp.com/send?phone=5548999999999', '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Encomendas - CASA DA MADEIRA</title>
+    <link rel="stylesheet" href="estiliza.css">
+    <link rel="stylesheet" href="encomendas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.jpg" alt="logo">
+            <div class="logo-text">
+                <strong>Casa da madeira</strong>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="home.html" class="btn">Home</a>
+            <a href="" class="btn">Fale Conosco</a>
+            <a href="encomendas.html" class="btn">Encomendas feitas</a>
+            <div class="button--container">
+                <a href="cadastro.html" class="btn">Cadastrar-se</a>
+                <a href="login.html" class="btn">Login</a>
+                <a href="" class="btn">ADM</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="form-header">
+            <img src="logo.jpg" alt="Logo Casa da Madeira">
+            <h1>MINHAS ENCOMENDAS</h1>
+            <h2>Acompanhe o status dos seus pedidos</h2>
+        </div>
+
+        <div class="form-body">
+            <div class="form-section">
+                <h3>Filtros de Busca</h3>
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="status-filter">Status do Pedido:</label>
+                        <select id="status-filter" class="form-input">
+                            <option value="">Todos os status</option>
+                            <option value=""> Abertos</option>
+                            <option value=""> Aprovado</option>
+                            <option value="cancelado">Cancelado</option>
+                            <option value="enviado">Enviado</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="status-filter">Usuarios:</label>
+                        <select id="status-filter" class="form-input">
+                            <option value="">Todos os usuarios</option>
+                            <option value=""> Abertos</option>
+                            <option value=""> Aprovado</option>
+                            <option value="cancelado">Cancelado</option>
+                            <option value="enviado">Enviado</option>
+                        </select>
+                    </div>
+                    <div class="field-group full-width">
+                        <label for="search">Buscar Pedido:</label>
+                        <input type="text" id="search" class="form-input" placeholder="Número do CPF do comprador do produto...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="orders-section">
+                <div class="orders-grid" id="orders-container">
+                    <!-- Os pedidos serão inseridos aqui via JavaScript -->
+                </div>
+
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <div class="empty-icon"></div>
+                    <h3>Nenhuma encomenda encontrada</h3>
+                    <p>Você ainda não fez nenhum pedido ou não há pedidos que correspondam aos filtros selecionados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="encomendas.js"></script>
+</body>
+</html>
