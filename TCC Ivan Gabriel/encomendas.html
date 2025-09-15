@@ -17,14 +17,13 @@
             </div>
         </div>
         <div class="header-right">
+            <a href="cadastro.html" class="btn">Cadastrar-se</a>
+            <a href="login.html" class="btn">Login</a>
+            <a href="fale_conosco.html" class="btn">Fale Conosco</a>
+            <a href="pedido.html" class="btn">Realizar Pedido</a>
             <a href="home.html" class="btn">Home</a>
-            <a href="" class="btn">Fale Conosco</a>
-            <a href="encomendas.html" class="btn">Encomendas feitas</a>
-            <div class="button--container">
-                <a href="cadastro.html" class="btn">Cadastrar-se</a>
-                <a href="login.html" class="btn">Login</a>
-                <a href="" class="btn">ADM</a>
-            </div>
+            <a href="" class="btn">ADM</a> 
+        </div>
         </div>
     </header>
 
@@ -59,7 +58,13 @@
                             <option value="enviado">Enviado</option>
                         </select>
                     </div>
-                    <div class="field-group full-width">
+                    <div calss="field-group">
+                        <label for="status-filter">Datas:</label>
+                        <select id="status-filter" calss="form-input">
+                            <option value=""> Todos as datas </option>
+                            <option value=""> data 2</option>
+                        </select>
+                    </div>                    <div class="field-group full-width">
                         <label for="search">Buscar Pedido:</label>
                         <input type="text" id="search" class="form-input" placeholder="Número do CPF do comprador do produto...">
                     </div>
@@ -68,7 +73,7 @@
 
             <div class="orders-section">
                 <div class="orders-grid" id="orders-container">
-                    <!-- Os pedidos serão inseridos aqui via JavaScript -->
+                    
                 </div>
 
                 <div class="empty-state" id="empty-state" style="display: none;">
