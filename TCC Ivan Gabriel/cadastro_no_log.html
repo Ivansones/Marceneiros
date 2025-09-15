@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro do usuario</title>
+    <link rel="stylesheet" href="estiliza.css">
+</head>
+<body>
+    <header class="header" >
+        <div class="logo">
+            <img src="logo.jpg" alt="logo">
+            <div class="logo-text">
+                <strong>Casa da madeira</strong>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <a href="home_no_log.html" class="btn">Home</a>
+            <a href="login_no_log.html" class="btn">Login</a>
+
+        </div>
+          
+        </div>
+    </header>
+    <div id="titulo_cad">
+    <p>Realize o cadastro da sua conta:</p>
+    <form action="cadastro.php" method="post">
+        <div id="corpo_cad">
+            <div class="form-section">
+                <h3>Dados Pessoais</h3>
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="senha">SENHA:</label>
+                        <input type="text" name="senha" id="senha" placeholder="*******" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" id="email" placeholder="seu@email.com" required>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="telefone_celular">Telefone Celular:</label>
+                        <input type="tel" name="telefone" id="telefone" placeholder="(00) 00000-0000" required>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-section">
+                <h3>Endereço</h3>
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" name="cep" id="cep" placeholder="00000-000" required>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" name="cidade" id="cidade" placeholder="Digite sua cidade" required>
+                    </div>
+                    
+                    <div class="field-group full-width">
+                        <label for="endereco">Endereço Completo:</label>
+                        <input type="text" name="endereco" id="endereco" placeholder="Rua, número, complemento" required>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" name="bairro" id="bairro" placeholder="Digite seu bairro" required>
+                    </div>
+                </div>
+            </div>
+            
+
+        <br>
+        <input type="submit" name="cadastrar" id="cadastrar" value="cadastrar">
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
