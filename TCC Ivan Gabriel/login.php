@@ -29,6 +29,7 @@ if (isset($_POST['verificar'])){
     }
     else 
     {
+        if ($dados['tipo'] == "usuario"){
         $_SESSION['user_id'] = $dados['id'];
         $_SESSION['user_nome'] = $dados['nome'];
         $_SESSION['user_cpf'] = $dados['cpf'];
@@ -41,6 +42,21 @@ if (isset($_POST['verificar'])){
         $_SESSION['user_tipo'] = $dados['tipo'];
         setcookie('nome',$nome);
         header('location:home.html');
+        }
+        else{
+            $_SESSION['user_id'] = $dados['id'];
+            $_SESSION['user_nome'] = $dados['nome'];
+            $_SESSION['user_cpf'] = $dados['cpf'];
+            $_SESSION['user_email'] = $dados['email'];
+            $_SESSION['user_cep'] = $dados['cep'];
+            $_SESSION['user_cidade'] = $dados['cidade'];
+            $_SESSION['user_telefone'] = $dados['telefone'];
+            $_SESSION['user_endereco'] = $dados['endereco'];
+            $_SESSION['user_bairro'] = $dados['bairro'];
+            $_SESSION['user_tipo'] = $dados['tipo'];
+            setcookie('nome',$nome);
+            header('location:home_adm.html');            
+        }
     }
 }
 
