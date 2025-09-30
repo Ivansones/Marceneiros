@@ -11,11 +11,11 @@ if (!$db) {
     die('Erro ao selecionar banco: ' . mysql_error());
 }
 
-// Buscar itens do catálogo
-$query = "SELECT * FROM itens ORDER BY id DESC";
+
+$query = "SELECT * FROM itens ORDER BY id DESC"; //"order by id desc" é ordene os resultados pela coluna id, do maior para o menor
 $resultado = mysql_query($query, $conectar);
 
-$itens = array();
+$itens = array(); //criação do array para preencher o array com dados, como os resultados de uma consulta ao banco de dados
 
 if ($resultado) {
     while ($item = mysql_fetch_assoc($resultado)) {

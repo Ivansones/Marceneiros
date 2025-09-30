@@ -1,9 +1,9 @@
 <?php
-$connect = mysql_connect('localhost','root','');
+$connect = mysql_connect('localhost', 'root', '');
 $db = mysql_select_db('marcenaria');
 
 if (!$connect) {
-    die("Erro de conexão: " . mysqli_connect_error());
+    die("Erro de conexão");
 }
 
 if (isset($_POST['cadastrar'])){
