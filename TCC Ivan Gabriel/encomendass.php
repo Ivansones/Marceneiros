@@ -9,7 +9,6 @@ if (!$connect) {
     die("Erro de conexão: " . mysql_connect());
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

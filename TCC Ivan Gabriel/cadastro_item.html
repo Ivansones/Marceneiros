@@ -21,7 +21,7 @@
             <a href="fale_conosco.html" class="btn">Fale Conosco</a>
             <a href="pedido.html" class="btn">Realizar Pedido</a>
             <a href="encomendas.html" class="btn">Encomendas feitas</a>
-            <a href="logout.php" class="bnt">Logout</a>
+            <a href="logout.php" class="btn">Logout</a>
         </div>
     </header>
 
@@ -30,7 +30,7 @@
         <form action="cadastro_item.php" method="post">
             <div id="corpo_cad">
                 <div class="form-section">
-                    <h3>Dados Pessoais</h3>
+                    <h3>Dados do novo produto</h3>
                     <div class="form-grid">
                         <div class="field-group">
                             <label for="nome">ID:</label>
@@ -41,13 +41,17 @@
                         <div class="field-group">
                             <label for="nome">Nome:</label>
                             <input type="text" name="nome" id="nome" placeholder="Nome" required>
-        
+                            
                             <label for="nome">Descrição:</label>
                             <input type="text" name="Descrição" id="Descrição" placeholder="Descrição" required>
                         </div>
-                    
-                      
-            
+                        <div class="field-group">
+                            <label>Foto 1:</label>
+                            <input type="file" name="foto1" id="foto1">
+                            <label>Foto 2:</label>
+                            <input type="file" name="foto2" id="foto2">
+                        </div>
+                    <br>
             <button type="submit" class="form-button btn-submit">Cadastrar</button>
             <button type="reset" class="form-button btn-reset"> Limpar </button>
             </div>
