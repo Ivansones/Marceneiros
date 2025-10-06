@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro dos produtos</title>
+    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="estiliza.css">
+</head>
+<body>
+    <header class="header" >
+        <div class="logo">
+            <img src="logo.jpg" alt="logo">
+            <div class="logo-text">
+                <strong>Casa da madeira</strong>
+                <small>Desde 2017</small>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <a href="home_adm.php" class="btn">Home</a>
+            <a href="encomendass.php" class="btn">Encomendas Feitas</a>
+            <a href="logout.php" class="btn">Logout</a>
+        </div>
+    </header>
+
+    <div id="titulo_cad">
+        <form method="post" action="cadastro_produtos.php" enctype="multipart/form-data">
+            <p>Realize o cadastro de um produto:</p>
+        
+            <div id="corpo_cad">
+                <div class="form-section">
+                    <h3>Dados do novo produto</h3>
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label for="nome">ID:</label>
+                            <input type="text" name="id" id="id" placeholder="Id" required>
+                            <label for="nome">Preço:</label>
+                            <input type="text" name="preco" id="preco" placeholder="Preço" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                            
+                            <label for="nome">Descrição:</label>
+                            <input type="text" name="descricao" id="descricao" placeholder="Descrição" required>
+
+                            <label for="nome">Quantidade:</label>
+                            <input type="text" name="quantidade" id="quantidade" placeholder="Quantidade" required>
+                        </div>
+                        <div class="field-group">
+                            <label>Foto:</label>
+                            <input type="file" name="foto" id="foto">
+                        </div>
+                    <br>
+            <input type="submit" name="cadastrar" id="cadastrar" value="cadastrar">
+            <input type="reset" name="limpar" id="limpar" value="limpar">            </div>
+        </form>
+    </div>
+    </body>
+</html>
