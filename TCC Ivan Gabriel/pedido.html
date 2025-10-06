@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos Específicos - CASA DA MADEIRA</title>
+    <title>Pedido</title>
+    <link rel="icon" href="logo.jpg">
     <link rel="stylesheet" href="estiliza.css">
-    
 </head>
 <body>
     <header class="header" >
@@ -16,23 +16,19 @@
                 <small>Desde 2017</small>
             </div>
         </div>
-        <!-- <div class="search-bar">
-            <input type="text" placeholder="O que deseja buscar?">
-            <button>Buscar</button>
-        </div>   -->
+
         <div class="header-right">
-          
             <a href="home.html" class="btn">Home</a>
             <a href="fale_conosco.html" class="btn">Fale Conosco</a>
-            <a href="pedido.html" class="btn">Realizar Pedido</a>
-            <a href="encomendas.html" class="btn">Encomendas feitas</a>
-            
-        </div>
+            <a href="encomendas.html" class="btn">Encomendas Feitas</a>
+            <a href="logout.php" class="btn">logout</a>
+            <div class="button--container">
+              <a href="cadastro.html" class="btn">Cadastrar-se</a>
+            </div>
+          </div>
           
         </div>
     </header>
-
-
     <div class="main-container">
         <div class="form-header">
             <img src="logo.jpg" alt="Logo Casa da Madeira">
@@ -40,8 +36,7 @@
             <h2>Faça seu pedido detalhado aqui</h2>
         </div>
 
-        <form name="formulario" method="post" action="" class="form-body">
-
+        <form name="formulario" method="post" action="pedido.php" class="form-body">
             <div class="form-section">
                 <h3>Informações da Encomenda</h3>
                 <div class="form-grid">
@@ -55,18 +50,36 @@
                         <input type="time" name="hora" id="hora" required>
                     </div>
                     
+                    <div class="field-group">
+                        <label for="hora">Escolha como vai ser esse pedido </label>
+                        <select name="qual">
+                            <option value="mesa">Mesa 600,00$</option>
+                            <option value="cadeira">Cadeira 70,00$</option>
+                            <option value="armario">Armario 700,00$</option>
+                            <option value="tabua">Tabua 100,00$</option>
+                            <option value="berço">Berço 800,00$</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="hora">Adicionais:</label>
+                        <input type="checkbox" name="adicionas[]" id="adicional_1" value="adicional_1">
+                        <label for="adicional_1">Nome: 40,00$</label>
+                        <input type="checkbox" name="adicionas[]" id="adicional_2" value="adicional_2">
+                        <label for="adicional_2">Marca: 20,00$</label>
+                    </div>
                     <div class="field-group full-width">
-                        <label for="tipo_pedido">Descrição Detalhada do Pedido:</label>
-                        <textarea name="tipo_pedido" id="tipo_pedido" placeholder="Descreva detalhadamente o produto que deseja encomendar (tipo de madeira, dimensões, acabamento, etc.)" required></textarea>
+                        <label for="tipo_pedido">Descrição Detalhada do Pedido:</label >
+                        <textarea name="descricao" id="descricao" placeholder="Descreva detalhadamente o produto que deseja encomendar (tipo de madeira, dimensões, acabamento, etc.)" required></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="form-buttons">
-                <button type="submit" class="form-button btn-submit">ENVIAR PEDIDO</button>
-                <button type="reset" class="form-button btn-reset">LIMPAR FORMULÁRIO</button>
+                <button type="submit" class="form-button btn-submit" name="enviar" id="enviar">ENVIAR PEDIDO</button>
+                <button type="reset" class="form-button btn-reset" name="limpar" id="limpar">LIMPAR FORMULÁRIO</button>
             </div>
         </form>
     </div>
+
 </body>
 </html>
