@@ -4,25 +4,25 @@ $connect = mysql_connect('localhost','root','');
 $db = mysql_select_db('marcenaria');
 
 if (!$connect) {
-    die("Erro de conexão: " . mysqli_connect_error());
+    die("Erro de conexão: " . mysql_connect());
 }
 $user_id = $_SESSION['user_id'];
+$user_cpf = $_SESSION['user_cpf'];
+$user_nome = $_SESSION['user_nome'];
+$user_email = $_SESSION['user_email'];
+$user_cep = $_SESSION['user_cep'];
+$user_cidade = $_SESSION['user_cidade'];
+$user_telefone = $_SESSION['user_telefone'];
+$user_endereco = $_SESSION['user_endereco'];
+$user_bairro = $_SESSION['user_bairro'];
 
 if (isset($_POST['enviar'])) {
-    $cpf = $_POST['cpf'];
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $telefone_celular= $_POST['telefone_celular'];
-    $cep = $_POST['cep'];
-    $cidade = $_POST['cidade'];
-    $endereco = $_POST['endereco'];
-    $bairro = $_POST['bairro'];
     $data = $_POST['data'];
     $hora = $_POST['hora'];
     $descricao = $_POST['descricao'];
     $qual = $_POST['qual'];
     $price = 0;
-    
+    $andamento = "nao";
     //Para o item base//
     $sql = "SELECT preco FROM opcoes
             WHERE nome = '$qual'";
@@ -50,8 +50,8 @@ if (isset($_POST['enviar'])) {
         }
     }
     }
-    $sql = "insert into pedidos(cpf,user_id,nome,email,telefone_celular,cep,cidade,endereco,bairro,data,hora,descricao,preco)
-    values('$cpf','$user_id','$nome','$email','$telefone_celular','$cep','$cidade','$endereco','$bairro','$data','$hora','$descricao','$price')";
+    $sql = "insert into pedidos(cpf,user_id,nome,email,cep,telefone_celular,cidade,endereco,bairro,data,hora,descricao,preco,andamento)
+    values('$user_cpf','$user_id','$user_nome','$user_email','$user_cep','$user_telefone','$user_cidade','$user_endereco','$user_bairro','$data','$hora','$descricao','$price','$andamento')";
 
 
     $resultado = mysql_query($sql);
@@ -60,7 +60,7 @@ if (isset($_POST['enviar'])) {
     {
         echo "<script language ='javascript' type='text/javascript'>
         alert ('O pedido foi enviado com sucesso.');
-        window.location.href ='home.html';
+        window.location.href ='home.php';
         </script>";
     }
     else{
