@@ -18,10 +18,11 @@
         </div>
         
         <div class="header-right">
-            <a href="home.html" class="btn">Home</a>
             <a href="pedido.html" class="btn">Realizar Pedido</a>
-            <a href="encomendas.html" class="btn">Encomendas feitas</a>
-            
+            <a href="home.php" class="btn">Home</a>
+            <a href="encomendas.html" class="btn">Encomendas Feitas</a>
+            <a href="logout.php" class="btn">logout</a>
+            <a href="cadastro.html" class="btn">Cadastrar-se</a>
         </div>
     </header>
 
@@ -52,10 +53,6 @@
                             <div class="info-title">E-mail</div>
                             <div class="info-detail">contato@casadamadeira.com.br</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-title">Redes sociais </div>
-                            <div class="info-detail">Casa da Madeira</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -63,23 +60,20 @@
     </main>
 
     <script>
-        // Função com número fixo padrão
-        function openWhatsApp(numero = '5548999999999') {
-            // Mensagem padrão (opcional)
+
+        function openWhatsApp(numero = '554899128555') {
+
             const mensagemPadrao = 'Olá! Vim do site da Casa da Madeira e gostaria de mais informações.';
             const mensagemCodificada = encodeURIComponent(mensagemPadrao);
             
-            // Monta a URL do WhatsApp
             const wppUrl = `https://api.whatsapp.com/send?phone=${numero}&text=${mensagemCodificada}`;
             
-            // Abre o WhatsApp
             window.open(wppUrl, '_blank');
         }
 
-        // Versão ainda mais simples - só com link direto
         function openWhatsAppSimples() {
-            // Substitua 5548999999999 pelo seu número real
-            window.open('https://api.whatsapp.com/send?phone=5548999999999', '_blank');
+            
+            window.open('https://api.whatsapp.com/send?phone=554899128555', '_blank');
         }
     </script>
 </body>
