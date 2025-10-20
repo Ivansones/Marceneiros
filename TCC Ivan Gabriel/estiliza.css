@@ -1,4 +1,4 @@
-
+/* ===== ESTILOS GERAIS ===== */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-
+/* ===== HEADER ===== */
 .header {
   display: flex;
   align-items: center;
@@ -29,12 +29,11 @@ body {
   height: 82px;
 }
 
-
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: auto;
 }
 
 .logo img {
@@ -47,7 +46,6 @@ body {
   font-size: 18px;
   display: block;
   color: #333;
-  margin-right: auto;
 }
 
 .logo-text small {
@@ -55,20 +53,17 @@ body {
   color: #666;
 }
 
-
+/* Header direita */
 .header-right {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-left: auto;
-  justify-content:space-between;
 }
 
 .button--container {
   display: flex;
-  gap: 1rem;
-  margin-left: auto;
-
+  gap: 8px;
 }
 
 /* Botões */
@@ -82,7 +77,6 @@ body {
   border-radius: 4px;
   transition: background-color 0.2s;
   font-weight: bold;
-  margin-left: auto;
 }
 
 .btn:hover {
@@ -99,25 +93,146 @@ body {
 
 /* ===== HOME - CONTEÚDO PRINCIPAL ===== */
 main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
+  display: block;
   min-height: calc(100vh - 100px);
 }
 
-main p {
-  max-width: 800px;
-  margin: 0;
-  padding: 30px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
+/* Parágrafo de introdução */
+main > p {
+  background: white; 
+  color: #333;  
+  padding: 40px;
+  border-radius: 15px;
   text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+/* ===== PRODUTOS ===== */
+/* Container dos produtos */
+main form {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f0f0f0;
+  transition: all 0.3s ease;
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 15px;
+  align-items: center;
+  position: relative;
+  animation: fadeInUp 0.5s ease-out;
+  max-width: 500px;
+}
+
+main form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(230, 159, 120, 0.2);
+  border-color: #e69f78;
+}
+
+main form::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #e69f78, #d4926b);
+  border-radius: 12px 0 0 12px;
+}
+
+/* Imagem do produto */
+main form img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #e69f78;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+/* Informações do produto */
+main form br {
+  display: block;
+  content: "";
+  margin: 8px 0;
+}
+
+main form {
+  font-size: 15px;
+  line-height: 2;
+  color: #333;
+}
+
+/* Botão comprar */
+main form input[type="submit"] {
+  background: linear-gradient(135deg, #e69f78, #d4926b);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  grid-column: 3;
+  grid-row: 2;
+  align-self: end;
+  margin-top: auto;
+  box-shadow: 0 4px 10px rgba(230, 159, 120, 0.3);
+}
+
+main form input[type="submit"]:hover {
+  background: linear-gradient(135deg, #d4926b, #c8855f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(230, 159, 120, 0.4);
+}
+
+main form input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Mensagem quando não há produtos */
+main > :not(p):not(form) {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 15px;
+  color: #666;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #e69f78;
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main form:nth-child(2) { animation-delay: 0.1s; }
+main form:nth-child(3) { animation-delay: 0.2s; }
+main form:nth-child(4) { animation-delay: 0.3s; }
+main form:nth-child(5) { animation-delay: 0.4s; }
+main form:nth-child(6) { animation-delay: 0.5s; }
 
 /* ===== CADASTRO E LOGIN ===== */
 .auth-container {
@@ -146,7 +261,7 @@ main p {
 }
 
 #corpo_cad, #corpo_log {
-  max-width: 700px; /* ALTERADO DE 420px PARA 700px */
+  max-width: 420px;
   width: 100%;
   padding: 40px;
   background: white;
@@ -281,95 +396,10 @@ main p {
 .main-container {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 30px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Título da página de encomendas */
-.main-container > h2 {
-  color: #e69f78;
-  font-size: 24px;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 3px solid #e69f78;
-  text-align: center;
-}
-
-/* Mensagem quando não há pedidos */
-.main-container > p {
-  text-align: center;
-  color: #666;
-  font-size: 16px;
-  padding: 40px;
-}
-
-/* Card de cada pedido */
-.main-container form {
-  background: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border-left: 4px solid #e69f78;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.main-container form:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
-}
-
-/* Informações do pedido */
-.main-container form br {
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* Botões de ação dos pedidos */
-.main-container input[type="submit"] {
-  padding: 10px 20px;
-  margin-right: 10px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Botão Iniciar */
-.main-container input[name="iniciar"] {
-  background-color: #28a745;
-  color: white;
-}
-
-.main-container input[name="iniciar"]:hover {
-  background-color: #218838;
-}
-
-/* Botão Cancelar */
-.main-container input[name="cancelar"],
-.main-container input[name="cancelando"] {
-  background-color: #dc3545;
-  color: white;
-}
-
-.main-container input[name="cancelar"]:hover,
-.main-container input[name="cancelando"]:hover {
-  background-color: #c82333;
-}
-
-/* Botão Finalizar */
-.main-container input[name="finalizar"] {
-  background-color: #e69f78;
-  color: white;
-}
-
-.main-container input[name="finalizar"]:hover {
-  background-color: #946549;
+  overflow: hidden;
 }
 
 .form-header {
@@ -440,7 +470,6 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="time"],
-input[type="file"], /* ADICIONADO */
 textarea,
 select.form-input,
 .form-input {
@@ -458,18 +487,12 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="time"]:focus,
-input[type="file"]:focus, /* ADICIONADO */
 textarea:focus,
 select.form-input:focus,
 .form-input:focus {
   outline: none;
   border-color: #e69f78;
   background-color: white;
-}
-
-input[type="file"] { /* ADICIONADO */
-  padding: 10px;
-  cursor: pointer;
 }
 
 textarea {
@@ -482,7 +505,6 @@ select.form-input,
   cursor: pointer;
 }
 
-/* ADICIONADO - Estilos para os botões do formulário de produto */
 .form-buttons {
   display: flex;
   gap: 15px;
@@ -523,6 +545,7 @@ select.form-input,
   transform: translateY(-2px);
 }
 
+/* ===== ENCOMENDAS ===== */
 .orders-section {
   margin-top: 30px;
 }
@@ -660,6 +683,35 @@ select.form-input,
     justify-content: center;
   }
   
+  main {
+    padding: 30px 15px;
+  }
+  
+  main > p {
+    padding: 25px;
+    font-size: 16px;
+  }
+  
+  main form {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  main form img {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+  }
+  
+  main form input[type="submit"] {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+  
   .form-grid {
     grid-template-columns: 1fr;
   }
@@ -671,7 +723,6 @@ select.form-input,
   
   .main-container {
     margin: 20px;
-    padding: 20px;
   }
   
   #corpo_cad, #corpo_log {
@@ -685,21 +736,5 @@ select.form-input,
   
   .contact-content {
     padding: 30px 20px;
-  }
-  
-  .main-container input[type="submit"] {
-    display: block;
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  /* ADICIONADO - Responsividade dos botões do formulário */
-  .form-buttons {
-    flex-direction: column;
-  }
-
-  .form-button {
-    width: 100%;
   }
 }
