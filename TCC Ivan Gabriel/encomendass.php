@@ -59,7 +59,7 @@ if ($user_tipo == "usuario" ){
         echo "<div class='header-right'>".
             "<a href='pedido.html' class='btn'>Realizar Pedido</a>".
             "<a href='fale_conosco.html' class='btn'>Fale Conosco</a>".
-            "<a href='home.html' class='btn'>Home</a>".
+            "<a href='home.php' class='btn'>Home</a>".
             "<a href='logout.php' class='btn'>logout</a>".
             "<a href='cadastro.html' class='btn'>Cadastrar-se</a>";
           echo "</div>";
@@ -74,12 +74,16 @@ else{
 }
 ?>
           
-        </div>
+     </div>
     </header>
-<?php
+    <div class="main-container">
+    
+    <?php
+    
 if ($user_tipo == "usuario" ){
     $sql = "SELECT pedido_id,nome,cidade,endereco,bairro,data,hora,descricao,preco,andamento FROM pedidos
     WHERE user_id ='$user_id' ";
+    
 
     $seleciona_produtos = mysql_query($sql);
     if (mysql_num_rows($seleciona_produtos) == 0){
@@ -135,10 +139,8 @@ else{
                  }
                  echo "</form>";
         }
-    }    
+    } 
 }
-
-
 ?>
 </body>
 </html>
