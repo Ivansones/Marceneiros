@@ -1,4 +1,4 @@
-/* ===== ESTILOS GERAIS ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,13 +9,11 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   line-height: 1.6;
-  /* Removido o flex e centralização que estava causando problemas */
-  /* Adicionado padding-top para compensar o header fixo */
   padding-top: 100px;
   min-height: 100vh;
 }
 
-/* ===== HEADER ===== */
+
 .header {
   display: flex;
   align-items: center;
@@ -28,14 +26,15 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  height: 82px; /* Definindo altura fixa para o header */
+  height: 82px;
 }
 
-/* Logo */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-right: auto;
 }
 
 .logo img {
@@ -48,6 +47,7 @@ body {
   font-size: 18px;
   display: block;
   color: #333;
+  margin-right: auto;
 }
 
 .logo-text small {
@@ -55,17 +55,20 @@ body {
   color: #666;
 }
 
-/* Header direita */
+
 .header-right {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-left: auto;
+  justify-content:space-between;
 }
 
 .button--container {
   display: flex;
-  gap: 8px;
+  gap: 1rem;
+  margin-left: auto;
+
 }
 
 /* Botões */
@@ -79,6 +82,7 @@ body {
   border-radius: 4px;
   transition: background-color 0.2s;
   font-weight: bold;
+  margin-left: auto;
 }
 
 .btn:hover {
@@ -132,7 +136,7 @@ main p {
   font-size: 24px;
   color: #333;
   font-weight: 300;
-  margin-top: 20px; /* Espaço adicional do topo */
+  margin-top: 20px;
 }
 
 #titulo_cad p, #titulo_log p {
@@ -142,7 +146,7 @@ main p {
 }
 
 #corpo_cad, #corpo_log {
-  max-width: 420px;
+  max-width: 700px; /* ALTERADO DE 420px PARA 700px */
   width: 100%;
   padding: 40px;
   background: white;
@@ -153,7 +157,7 @@ main p {
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin: 0 auto; /* Centraliza horizontalmente */
+  margin: 0 auto;
 }
 
 #corpo_cad::before, #corpo_log::before {
@@ -235,7 +239,6 @@ main p {
   box-shadow: 0 4px 15px rgba(230, 159, 120, 0.2);
 }
 
-/* Efeito ripple nos botões */
 #corpo_cad input[type="submit"]::after,
 #corpo_log input[type="submit"]::after {
   content: '';
@@ -256,7 +259,6 @@ main p {
   height: 300px;
 }
 
-/* Link de alternância entre login e cadastro */
 .auth-switch {
   margin-top: 25px;
   color: #666;
@@ -279,10 +281,95 @@ main p {
 .main-container {
   max-width: 1200px;
   margin: 20px auto;
+  padding: 30px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+}
+
+/* Título da página de encomendas */
+.main-container > h2 {
+  color: #e69f78;
+  font-size: 24px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #e69f78;
+  text-align: center;
+}
+
+/* Mensagem quando não há pedidos */
+.main-container > p {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 40px;
+}
+
+/* Card de cada pedido */
+.main-container form {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #e69f78;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.main-container form:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Informações do pedido */
+.main-container form br {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Botões de ação dos pedidos */
+.main-container input[type="submit"] {
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Botão Iniciar */
+.main-container input[name="iniciar"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.main-container input[name="iniciar"]:hover {
+  background-color: #218838;
+}
+
+/* Botão Cancelar */
+.main-container input[name="cancelar"],
+.main-container input[name="cancelando"] {
+  background-color: #dc3545;
+  color: white;
+}
+
+.main-container input[name="cancelar"]:hover,
+.main-container input[name="cancelando"]:hover {
+  background-color: #c82333;
+}
+
+/* Botão Finalizar */
+.main-container input[name="finalizar"] {
+  background-color: #e69f78;
+  color: white;
+}
+
+.main-container input[name="finalizar"]:hover {
+  background-color: #946549;
 }
 
 .form-header {
@@ -326,7 +413,6 @@ main p {
   border-bottom: 2px solid #e69f78;
 }
 
-/* Grid de campos */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -342,7 +428,6 @@ main p {
   grid-column: 1 / -1;
 }
 
-/* Labels */
 label {
   font-weight: bold;
   color: #333;
@@ -350,12 +435,12 @@ label {
   font-size: 14px;
 }
 
-/* Inputs */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="time"],
+input[type="file"], /* ADICIONADO */
 textarea,
 select.form-input,
 .form-input {
@@ -373,12 +458,18 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="time"]:focus,
+input[type="file"]:focus, /* ADICIONADO */
 textarea:focus,
 select.form-input:focus,
 .form-input:focus {
   outline: none;
   border-color: #e69f78;
   background-color: white;
+}
+
+input[type="file"] { /* ADICIONADO */
+  padding: 10px;
+  cursor: pointer;
 }
 
 textarea {
@@ -391,7 +482,7 @@ select.form-input,
   cursor: pointer;
 }
 
-/* Botões do formulário */
+/* ADICIONADO - Estilos para os botões do formulário de produto */
 .form-buttons {
   display: flex;
   gap: 15px;
@@ -432,7 +523,6 @@ select.form-input,
   transform: translateY(-2px);
 }
 
-/* ===== ENCOMENDAS ===== */
 .orders-section {
   margin-top: 30px;
 }
@@ -554,7 +644,7 @@ select.form-input,
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
   body {
-    padding-top: 140px; /* Mais espaço em mobile devido ao header maior */
+    padding-top: 140px;
   }
   
   .header {
@@ -562,7 +652,7 @@ select.form-input,
     gap: 15px;
     text-align: center;
     padding: 15px;
-    height: auto; /* Altura automática em mobile */
+    height: auto;
   }
   
   .header-right {
@@ -581,6 +671,7 @@ select.form-input,
   
   .main-container {
     margin: 20px;
+    padding: 20px;
   }
   
   #corpo_cad, #corpo_log {
@@ -589,10 +680,26 @@ select.form-input,
   }
   
   #titulo_cad, #titulo_log {
-    margin-top: 0; /* Remove o espaço extra em mobile */
+    margin-top: 0;
   }
   
   .contact-content {
     padding: 30px 20px;
+  }
+  
+  .main-container input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  /* ADICIONADO - Responsividade dos botões do formulário */
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-button {
+    width: 100%;
   }
 }
