@@ -6,6 +6,36 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 
+if (isset($_POST['id']) && $_POST['id']!=""){
+    $id = $_POST['id'];
+    $resultado = mysql_query("select nome,descricao,preco,imagen from itens where id = '$id'");
+    $row = mysql_fetch_assoc($resultado);
+    $nome = $row['nome'];
+    $descricao = $row['descricao'];
+    $preco = $row['preco'];
+    $imagen = $row['imagen'];
+
+    $cartArray = array($id=>array('nome'=>$nome,'descricao'=>$descricao,'preco'=>$preco,'imagen'=>$imagen));
+
+    if(empty($_SESSION["shopping_cart"])) {
+        $_SESSION["shopping_cart"] = $cartArray;
+        $status = "<div class='box'>Produto foi add ao carrinho !</div>";
+        }
+        else{
+        $array_keys = array_keys($_SESSION["shopping_cart"]);
+    
+       if(in_array($id,$array_keys)) {
+        $status = "<div class='box' style='color:red;'>
+        Produto ja foi adicionado ao carrinho!</div>";
+        }
+        else {
+        $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+        $status = "<div class='box'>Produto  foi add ao carrinho!</div>";
+        }
+    
+        }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,6 +47,14 @@ $user_id = $_SESSION['user_id'];
     <link rel="stylesheet" href="estiliza.css">
 </head>
 <body>
+        <div class="cart_div">
+        <a href="cart.php"><img src="carrinho.png" height=50 width=50/>Carrinho<span>
+        <?php  
+        if(!empty($_SESSION["shopping_cart"])) {
+            $cart_count = count(array_keys($_SESSION["shopping_cart"]));   
+            echo $cart_count;   }
+            ?></span></a>
+        </div>
     <header class="header" >
         <div class="logo">
             <img src="logo.jpg" alt="logo">
@@ -56,6 +94,7 @@ $user_id = $_SESSION['user_id'];
                     "Descrição  : ". $dados->descricao . "<br>".
                     "Preço      : ". $dados->preco . "<br>".
                     "Quantidade : ". $dados->quantidade . "<br>".
+                    "<input type='hidden' name='id' value='" . $dados->id . "'>".
                     "<img src='imagens/" . $dados->imagen . "'height='100' width='150' />";
                     if ($dados->quantidade == 0){
                         echo "Produto indisponivel";
