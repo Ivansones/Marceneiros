@@ -1,3 +1,4 @@
+
 <?php
 $connect = mysql_connect('localhost','root','');
 $db = mysql_select_db('marcenaria');
@@ -28,7 +29,21 @@ if (isset($_POST['finalizar'])){
     $mudando = mysql_query($sql_muda);
 }
 
+if (isset($_POST['voltar'])){
+    $pedido_id = $_POST['pedido_id'];
+    $sql_muda = "UPDATE pedidos SET andamento = 'processando' WHERE pedido_id = '$pedido_id'";
+
+    $mudando = mysql_query($sql_muda);
+}
+
 if (isset($_POST['cancelando'])){
+    $pedido_id = $_POST['pedido_id'];
+    $sql_tira = "delete from pedidos where pedido_id = '$pedido_id'";
+
+    $mudando = mysql_query($sql_tira);
+}
+
+if (isset($_POST['retirar'])){
     $pedido_id = $_POST['pedido_id'];
     $sql_tira = "delete from pedidos where pedido_id = '$pedido_id'";
 
@@ -66,10 +81,10 @@ if ($user_tipo == "usuario" ){
         }
 else{
         echo "<div class='header-right'>".
-            "<a href='cadastra_produtos.html' class='btn'>Cadastra produtos</a>".
-            "<a href='home_adm.html' class='btn'>Home</a>".
-            "<a href='logout.php' class='btn'>logout</a>".
-            "<a href='cadastro.html' class='btn'>Cadastrar-se</a>";
+            "<a href='cadastro_produtos.html' class='btn'>Cadastra produtos</a>".
+            "<a href='compras.php' class='btn'>Vendas</a>".
+            "<a href='home_adm.php' class='btn'>Home</a>".
+            "<a href='logout.php' class='btn'>logout</a>";
           echo "</div>";
 }
 ?>
@@ -136,6 +151,9 @@ else{
                  else if ($dados->andamento == 'processando'){
                     echo "<input type='submit' name='cancelar' value='cancelar'>";
                     echo "<input type='submit' name='finalizar' value='finalizar'>";
+                 } else if ($dados->andamento == 'finalizado'){
+                    echo "<input type='submit' name='voltar' value='voltar'>";
+                    echo "<input type='submit' name='retirar' value='retirar'>";
                  }
                  echo "</form>";
         }
