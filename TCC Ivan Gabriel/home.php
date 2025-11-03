@@ -1,41 +1,63 @@
 <?php
+$connect = mysql_connect('localhost','root','');
+$db = mysql_select_db('marcenaria');
 session_start();
 
-$conectar = mysql_connect('localhost', 'root', '');
-if (!$conectar) {
-    die('Erro de conexão: ' . mysql_error());
+$user_id = $_SESSION['user_id'];
+$user_tipo = $_SESSION['user_tipo'];
+
+if (isset($_POST['id']) && $_POST['id']!=""){
+    $id = $_POST['id'];
+    $resultado = mysql_query("select nome,descricao,preco,quantidade,imagen from itens where id = '$id'");
+    $row = mysql_fetch_assoc($resultado);
+    $nome = $row['nome'];
+    $descricao = $row['descricao'];
+    $preco = $row['preco'];
+    $quantidade = $row['quantidade'];
+    $imagen = $row['imagen'];
+
+    $cartArray = array($id=>array('id'=>$id,'nome'=>$nome,'descricao'=>$descricao,'preco'=>$preco,'quantidade'=>$quantidade,'imagen'=>$imagen));
+
+    if(empty($_SESSION["shopping_cart"])) {
+        $_SESSION["shopping_cart"] = $cartArray;
+        $status = "<div class='box'>Produto foi add ao carrinho !</div>";
+        }
+        else{
+        $array_keys = array_keys($_SESSION["shopping_cart"]);
+    
+       if(in_array($id,$array_keys)) {
+        $status = "<div class='box' style='color:red;'>
+        Produto ja foi adicionado ao carrinho!</div>";
+        }
+        else {
+        $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+        $status = "<div class='box'>Produto  foi add ao carrinho!</div>";
+        }
+    
+        }
 }
-
-$db = mysql_select_db('marcenaria', $conectar);
-if (!$db) {
-    die('Erro ao selecionar banco: ' . mysql_error());
-}
-
-$query = "SELECT * FROM itens ORDER BY id DESC";
-$resultado = mysql_query($query, $conectar);
-
-$itens = array();
-
-if ($resultado) {
-    while ($item = mysql_fetch_assoc($resultado)) {
-        $itens[] = $item;
-    }
-}
-
-mysql_close($conectar);
 
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Home - Marcenaria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcineiros</title>
     <link rel="icon" href="logo.jpg">
     <link rel="stylesheet" href="estiliza.css">
+    
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+        <div class="cart_div">
+        <a href="cart.php"><img src="carrinho.png" height=50 width=50/>Carrinho<span>
+        <?php  
+        if(!empty($_SESSION["shopping_cart"])) {
+            $cart_count = count(array_keys($_SESSION["shopping_cart"]));   
+            echo $cart_count;   }
+            ?></span></a>
+        </div>
+    <header class="header" >
         <div class="logo">
             <img src="logo.jpg" alt="logo">
             <div class="logo-text">
@@ -45,77 +67,50 @@ mysql_close($conectar);
         </div>
         
         <div class="header-right">
+            <a href="conta.php" class="btn">Sua conta</a>
             <a href="pedido.html" class="btn">Realizar Pedido</a>
             <a href="fale_conosco.html" class="btn">Fale Conosco</a>
             <a href="encomendass.php" class="btn">Encomendas Feitas</a>
+            <a href="cadastro.html" class="btn">Cadastrar-se</a>
             <a href="logout.php" class="btn">logout</a>
         </div>
-    </header>
-
-    <main>
-        <div class="home-content">
-            <h1>Bem-vindo à Marcenaria Artesanal</h1>
-            <p>Bem-vindo à Casa da Madeira, veja as diferentes marcenarias feitas por Amilcar Daniel Cesa.
-            Também estamos disponíveis para fazer pedidos customizados, dependendo de suas preferências e desejos.</p>
-
-            <section class="items-section">
-                <h2>Nossos Produtos</h2>
-                
-                <?php if (count($itens) > 0): ?>
-                    <div class="items-grid">
-                        <?php foreach ($itens as $item): ?>
-                            <div class="item-card">
-                                <div class="item-header">
-                                    <h3><?php echo htmlspecialchars($item['nome']); ?></h3>
-                                </div>
-                                
-                                <?php 
-                                // Verifica se a coluna existe (pode ser 'imagen' ou 'imagem')
-                                $caminho_imagem = '';
-                                if (!empty($item['imagen'])) {
-                                    $caminho_imagem = 'imagens/' . $item['imagen'];
-                                } elseif (!empty($item['imagem'])) {
-                                    $caminho_imagem = 'imagens/' . $item['imagem'];
-                                }
-                                
-                                if ($caminho_imagem && file_exists($caminho_imagem)): 
-                                ?>
-                                    <img src="<?php echo htmlspecialchars($caminho_imagem); ?>" 
-                                         alt="<?php echo htmlspecialchars($item['nome']); ?>"
-                                         style="width: 100%; height: 250px; object-fit: cover; display: block;">
-                                <?php else: ?>
-                                    <div style="width: 100%; height: 250px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999;">
-                                        <p>Imagem não disponível</p>
-                                    </div>
-                                <?php endif; ?>
-                                
-                                <div class="item-body">
-                                    <?php if (isset($item['descricao'])): ?>
-                                        <p class="item-description"><?php echo htmlspecialchars($item['descricao']); ?></p>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (isset($item['preco'])): ?>
-                                        <p class="item-price">R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?></p>
-                                    <?php endif; ?>
-                                    
-                                    <?php if (isset($item['categoria'])): ?>
-                                        <span class="item-category"><?php echo htmlspecialchars($item['categoria']); ?></span>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="item-footer">
-                                    <a href="pedido.php?item_id=<?php echo $item['id']; ?>" class="btn-order">Comprar</a>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php else: ?>
-                    <div class="empty-state">
-                        <h3>Nenhum produto disponível</h3>
-                        <p>No momento não há produtos cadastrados. Entre em contato conosco para mais informações.</p>
-                    </div>
-                <?php endif; ?>
-            </section>
+          
         </div>
+    </header>
+    <main>
+        <p>
+            Bem-vindo à Casa da Madeira, veja as diferentes marcenarias feitas por Amilcar Daniel Cesa.
+            Também estamos disponíveis para fazer pedidos customizados, dependendo de suas preferências e desejos.
+        </p>
+        <?php
+        $sql_produto = "select id,nome,descricao,preco,quantidade,imagen from itens";
+
+        $seleciona_produto = mysql_query($sql_produto);
+
+        if (mysql_num_rows($seleciona_produto) == 0){
+            echo "Não ha nenhum produto disponivel no momento";
+        }
+        else {
+            while ($dados = mysql_fetch_object($seleciona_produto)){
+                echo "<form action='home.php' method='post'>".
+                    "Nome       : ". $dados->nome .      "<br>".
+                    "Descrição  : ". $dados->descricao . "<br>".
+                    "Preço      : ". $dados->preco . "<br>".
+                    "Quantidade : ". $dados->quantidade . "<br>".
+                    "<input type='hidden' name='id' value='" . $dados->id . "'>".
+                    "<img src='imagens/" . $dados->imagen . "'height='100' width='150' />";
+                    if ($dados->quantidade == 0){
+                        echo "Produto indisponivel";
+                    }
+                    else{
+                        echo "<input type='submit' name='comprar' value='comprar'>";
+                    }
+                echo "</form>";
+            }
+        }
+        ?>
     </main>
+
 </body>
-</html
+
+</html>
