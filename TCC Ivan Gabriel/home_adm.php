@@ -13,7 +13,21 @@ if (isset($_POST['excluir'])){
     $mudando = mysql_query($sql_tira);
 }
 
+if (isset($_POST['atualizar'])){
+    $id = $_POST['id'];
+    $nova_quantidade = $_POST['quantidade'];
+
+    $sql_atualiza = "UPDATE itens SET quantidade = '$nova_quantidade' WHERE id = '$id'";
+    $resultado = mysql_query($sql_atualiza);
+
+    if ($resultado) {
+        echo "<script>alert('Quantidade atualizada com sucesso!'); window.location.href='home_adm.php';</script>";
+    } else {
+        echo "<script>alert('Erro ao atualizar quantidade!');</script>";
+    }
+}
 ?>
+
 
 
 
@@ -38,8 +52,8 @@ if (isset($_POST['excluir'])){
         
         <div class="header-right">
             <a href="cadastro_produtos.html" class="btn">Cadastro de produtos</a>
+            <a href="compras.php" class="btn">Vendas</a>
             <a href="encomendass.php" class="btn">Encomendas Feitas</a>
-            <a href="cadastro.html" class="btn">Cadastrar-se</a>
             <a href="logout.php" class="btn">logout</a>
         </div>
           
@@ -63,10 +77,11 @@ if (isset($_POST['excluir'])){
                     "Nome       : ". $dados->nome .      "<br>".
                     "Descrição  : ". $dados->descricao . "<br>".
                     "Preço      : ". $dados->preco . "<br>".
-                    "Quantidade : ". $dados->quantidade . "<br>".
+                    "Quantidade : <input type='number' name='quantidade' value='". $dados->quantidade ."' min='0'><br>".
                     "<img src='imagens/" . $dados->imagen . "'height='100' width='150' />".
                     "<input type='hidden' name='id' value='" . $dados->id . "'>".
-                    "<input type='submit' name='excluir' value='excluir'>";
+                    "<input type='submit' name='excluir' value='excluir'>".
+                    "<input type='submit' name='atualizar' value='atualizar quantidade'>";
                 echo "</form>";
             }
         }
