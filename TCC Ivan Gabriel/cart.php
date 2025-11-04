@@ -43,7 +43,7 @@ if (isset($_POST["comprar"])){
             }
             else{
             $sqladiciona = "Insert into vendas(nome,descricao,preco,id_usuario,data,imagen)
-                    values('".$product['nome']."','".$product['descricao']."','".$product['preco']."','".$user_id."','".$data_hora."','".$product['imagen']."')";
+                    values('" . $product['nome'] . "','" . $product['descricao'] . "','" . $product['preco'] . "','" . $user_id . "','" . $data_hora . "','" . $product['imagen'] . "')";
        
                 
             $resultado = mysql_query($sqladiciona);
@@ -75,67 +75,75 @@ if (isset($_POST["comprar"])){
 <HTML>
 <HEAD>
  <TITLE>Carrinho Compras </TITLE>
-  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="estiliza.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </HEAD>
 <BODY>
 
-<a href="home.php">voltar</a>
-<div class="cart">
-<?php
-if(isset($_SESSION["shopping_cart"])){
+<div class="home-content">
+    <a href="home.php" class="btn" style="margin-bottom: 20px; display: inline-block;">Voltar para a Home</a>
 
-?>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Nome</td>
-                <td>Descricao</td>
-                <td>Preco</td>
-                <td>Imagen</td>
-            </tr>
-        </thead>
-        <tbody>
-<?php
-    foreach ($_SESSION["shopping_cart"] as $key => $product){
-    ?>
-        <tr>
-            <td><?php echo $product["nome"]; ?></td>
-            <td><?php echo $product["descricao"]; ?></td>
-            <td><?php echo number_format($product["preco"],2,',','.'); ?></td>
-            <td><img src="imagens/<?php echo $product["imagen"]; ?>" height="50" width="75"></td>
-            <td>
-                <form action="" method="post">
-                    <input type="hidden" name="codigo" value="<?php echo $key; ?>" />
-                    <input type="hidden" name="action" value="remove" />
-                    <button type="submit" class="remove">Remover Item</button>
+    <section class="items-section">
+        <h2>Seu Carrinho de Compras</h2>
+
+        <div class="cart-content">
+            <?php
+            if(isset($_SESSION["shopping_cart"])){
+            ?>
+                <table class="table cart-table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>descricao</th>
+                            <th>Valor</th>
+                            <th>Imagem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <?php
+                foreach ($_SESSION["shopping_cart"] as $key => $product){
+                ?>
+                    <tr>
+                        <td><?php echo $product["nome"]; ?></td>
+                        <td><?php echo $product["descricao"]; ?></td>
+                        <td>R$ <?php echo number_format($product["preco"],2,',','.'); ?></td>
+                        <td><img src="imagens/<?php echo $product["imagen"]; ?>" class="cart-item-image"></td>
+                        <td>
+                            <form action="" method="post">
+                                <input type="hidden" name="id" value="<?php echo $key; ?>" />
+                                <input type="hidden" name="action" value="remove" />
+                                <button type="submit" class="btn-remove">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+                </tbody>
+            </table>
+            <?php
+            }else{
+                echo "<div class='empty-state'><h3>Seu carrinho está vazio!</h3><p>Adicione produtos da loja para vê-los aqui.</p></div>";
+            }
+            ?>
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <div class="message_box" style="margin:10px 0px;">
+        <?php echo $status; ?>
+        </div>
+
+        <?php if(!empty($_SESSION["shopping_cart"])): ?>
+            <div class="cart-footer">
+                <form action="cart.php" method="post">
+                    <input type="submit" name="comprar" value="Finalizar Compra" class="btn-order">
                 </form>
-            </td>
-        </tr>
-    <?php
-    }
-    ?>
-    <tr>
-        <td colspan="5" align="right">
-            </td>
-    </tr>
-    </tbody>
-</table>
-  <?php
-}else{
-	echo "<h3>Seu carrinho est� vazio !</h3>";
-	}
-?>
-</div>
+            </div>
+        <?php endif; ?>
 
-<div style="clear:both;"></div>
-
-<div class="message_box" style="margin:10px 0px;">
-<?php echo $status; ?>
+    </section>
 </div>
-<form action="cart.php" method="post">
-    <input type="submit" name="comprar" id="comprar" placeholder="Comprar">
-</form>
 
 </BODY>
 </HTML>
