@@ -41,7 +41,7 @@ if (isset($_POST['verificar'])){
         $_SESSION['user_bairro'] = $dados['bairro'];
         $_SESSION['user_tipo'] = $dados['tipo'];
         setcookie('nome',$nome);
-        header('location:home.html');
+        header('location:home.php');
         }
         else{
             $_SESSION['user_id'] = $dados['id'];
@@ -55,12 +55,9 @@ if (isset($_POST['verificar'])){
             $_SESSION['user_bairro'] = $dados['bairro'];
             $_SESSION['user_tipo'] = $dados['tipo'];
             setcookie('nome',$nome);
-            header('location:home_adm.html');            
+            header('location:home_adm.php');            
         }
     }
 }
-
-
-
 
 ?>
