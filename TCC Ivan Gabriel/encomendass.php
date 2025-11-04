@@ -1,4 +1,3 @@
-
 <?php
 $connect = mysql_connect('localhost','root','');
 $db = mysql_select_db('marcenaria');
@@ -92,73 +91,97 @@ else{
      </div>
     </header>
     <div class="main-container">
+        <div class="items-section">
+            <h2>
+                <?php
+                if ($user_tipo == "usuario" ){
+                    echo "Meus Pedidos Realizados";
+                } else {
+                    echo "Pedidos Recebidos";
+                }
+                ?>
+            </h2>
+            <div class="items-grid">
     
-    <?php
-    
-if ($user_tipo == "usuario" ){
-    $sql = "SELECT pedido_id,nome,cidade,endereco,bairro,data,hora,descricao,preco,andamento FROM pedidos
-    WHERE user_id ='$user_id' ";
-    
-
-    $seleciona_produtos = mysql_query($sql);
-    if (mysql_num_rows($seleciona_produtos) == 0){
-        echo "Voce não tem nenhum pedido";
-    }
-    else{
-        echo "Aqui estão os pedidos realizados";
-        while ($dados = mysql_fetch_object($seleciona_produtos)){
-            echo "<form action='encomendass.php' method='post'>".
-                 "Cidade       : ". $dados->cidade   . "<br>".
-                 "Endereço     : ". $dados->endereco . "<br>".
-                 "Bairro       : ". $dados->bairro   . "<br>".
-                 "Data         : ". $dados->data     . "<br>".
-                 "Hora         : ". $dados->hora     . "<br>".
-                 "Descriçao    : ". $dados->descricao. "<br>".
-                 "preco        : ". $dados->preco    . "<br>".
-                 "Andamento    : ". $dados->andamento. "<br>".
-                 "<input type='hidden' name='pedido_id' value='" . $dados->pedido_id . "'>";
-                 if ($dados->andamento == 'nao'){
-                    echo "<input type='submit' name='cancelando' value='cancelar'>";
-                 }
-                 echo "</form>";
-        }
-    }
-    }
-else{
-    $sql = "SELECT pedido_id,nome,cidade,endereco,bairro,data,hora,descricao,preco,andamento FROM pedidos";
-    $seleciona_produtos = mysql_query($sql);
-    if (mysql_num_rows($seleciona_produtos) == 0){
-        echo "Nenhum pedidos foi enviado";
-    }
-    else{
-        echo "Aqui estão os pedidos que foram mandados";
-        while ($dados = mysql_fetch_object($seleciona_produtos)){
-            $codigo = $dados->pedido_id;
-            echo "<form action='encomendass.php' method='post'>".
-                 "Nome         : ". $dados->nome   . "<br>".
-                 "Cidade       : ". $dados->cidade   . "<br>".
-                 "Endereço     : ". $dados->endereco . "<br>".
-                 "Bairro       : ". $dados->bairro   . "<br>".
-                 "Data         : ". $dados->data     . "<br>".
-                 "Hora         : ". $dados->hora     . "<br>".
-                 "Descriçao    : ". $dados->descricao. "<br>".
-                 "preco        : ". $dados->preco    . "<br>".
-                 "Andamento    : ". $dados->andamento. "<br>".
-                 "<input type='hidden' name='pedido_id' value='" . $dados->pedido_id . "'>";
-                 if ($dados->andamento == 'nao'){
-                    echo "<input type='submit' name='iniciar' value='Iniciar'>";
-                 }
-                 else if ($dados->andamento == 'processando'){
-                    echo "<input type='submit' name='cancelar' value='cancelar'>";
-                    echo "<input type='submit' name='finalizar' value='finalizar'>";
-                 } else if ($dados->andamento == 'finalizado'){
-                    echo "<input type='submit' name='voltar' value='voltar'>";
-                    echo "<input type='submit' name='retirar' value='retirar'>";
-                 }
-                 echo "</form>";
-        }
-    } 
-}
-?>
+            <?php
+            
+            if ($user_tipo == "usuario" ){
+                $sql = "SELECT pedido_id,nome,cidade,endereco,bairro,data,hora,descricao,preco,andamento FROM pedidos
+                WHERE user_id ='$user_id' ";
+                
+            
+                $seleciona_produtos = mysql_query($sql);
+                if (mysql_num_rows($seleciona_produtos) == 0){
+                    echo "<div class='empty-state'><h3>Nenhum Pedido Encontrado</h3><p>Você ainda não realizou nenhum pedido.</p></div>";
+                }
+                else{
+                    while ($dados = mysql_fetch_object($seleciona_produtos)){
+                        echo "<div class='item-card'>".
+                                "<div class='item-header'>".
+                                    "<h3>Pedido #". $dados->pedido_id . "</h3>".
+                                "</div>".
+                                "<div class='item-body'>".
+                                    "<p><strong>Descrição:</strong> <span class='item-description'>". $dados->descricao. "</span></p>".
+                                    "<p><strong>Preço:</strong> <span class='item-price'>R$ ". number_format($dados->preco, 2, ',', '.') . "</span></p>".
+                                    "<p><strong>Data:</strong> ". $dados->data . " às " . $dados->hora . "</p>".
+                                    "<p><strong>Endereço:</strong> ". $dados->endereco . ", " . $dados->bairro . " - " . $dados->cidade . "</p>".
+                                    "<p><strong>Andamento:</strong> <span class='item-category'>". strtoupper($dados->andamento) . "</span></p>".
+                                "</div>".
+                                "<div class='item-footer'>".
+                                    "<form action='encomendass.php' method='post'>".
+                                        "<input type='hidden' name='pedido_id' value='" . $dados->pedido_id . "'>";
+                                        if ($dados->andamento == 'nao'){
+                                            echo "<input type='submit' name='cancelando' value='Cancelar Pedido' class='btn-order'>";
+                                        }
+                                    echo "</form>".
+                                "</div>".
+                            "</div>";
+                    }
+                }
+                }
+            else{
+                $sql = "SELECT pedido_id,nome,cidade,endereco,bairro,data,hora,descricao,preco,andamento FROM pedidos";
+                $seleciona_produtos = mysql_query($sql);
+                if (mysql_num_rows($seleciona_produtos) == 0){
+                    echo "<div class='empty-state'><h3>Nenhum Pedido Recebido</h3><p>Ainda não há pedidos para processar.</p></div>";
+                }
+                else{
+                    while ($dados = mysql_fetch_object($seleciona_produtos)){
+                        $codigo = $dados->pedido_id;
+                        echo "<div class='item-card'>".
+                                "<div class='item-header'>".
+                                    "<h3>Pedido #". $dados->pedido_id . "</h3>".
+                                "</div>".
+                                "<div class='item-body'>".
+                                    "<p><strong>Cliente:</strong> ". $dados->nome . "</p>".
+                                    "<p><strong>Descrição:</strong> <span class='item-description'>". $dados->descricao. "</span></p>".
+                                    "<p><strong>Preço:</strong> <span class='item-price'>R$ ". number_format($dados->preco, 2, ',', '.') . "</span></p>".
+                                    "<p><strong>Data:</strong> ". $dados->data . " às " . $dados->hora . "</p>".
+                                    "<p><strong>Endereço:</strong> ". $dados->endereco . ", " . $dados->bairro . " - " . $dados->cidade . "</p>".
+                                    "<p><strong>Andamento:</strong> <span class='item-category'>". strtoupper($dados->andamento) . "</span></p>".
+                                "</div>".
+                                "<div class='item-footer'>".
+                                    "<form action='encomendass.php' method='post'>".
+                                        "<input type='hidden' name='pedido_id' value='" . $dados->pedido_id . "'>";
+                                        if ($dados->andamento == 'nao'){
+                                            echo "<input type='submit' name='iniciar' value='Iniciar Processamento' class='btn-order'>";
+                                        }
+                                        else if ($dados->andamento == 'processando'){
+                                            echo "<input type='submit' name='cancelar' value='Cancelar' class='btn-order btn-cancelar-processando'>";
+                                            echo "<input type='submit' name='finalizar' value='Finalizar Pedido' class='btn-order'>";
+                                        } else if ($dados->andamento == 'finalizado'){
+                                            echo "<input type='submit' name='voltar' value='Voltar para Processamento' class='btn-order btn-voltar-processamento'>";
+                                            echo "<input type='submit' name='retirar' value='Retirar Pedido' class='btn-order btn-retirar-pedido'>";
+                                        }
+                                    echo "</form>".
+                                "</div>".
+                            "</div>";
+                    }
+                } 
+            }
+            ?>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
