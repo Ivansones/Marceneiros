@@ -77,6 +77,9 @@ body {
   border-radius: 4px;
   transition: background-color 0.2s;
   font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -89,6 +92,10 @@ body {
 
 .btn:visited {
   color: white;
+}
+
+.btn:focus {
+  outline: none;
 }
 
 /* ===== HOME - CONTEÚDO ===== */
@@ -214,6 +221,9 @@ body {
 
 /* Footer do Card */
 .item-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 15px 20px;
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
@@ -231,11 +241,18 @@ body {
   font-weight: bold;
   font-size: 14px;
   transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .btn-order:hover {
   background-color: #946549;
   transform: translateY(-2px);
+}
+
+.btn-order:focus {
+  outline: none;
 }
 
 /* Empty State */
@@ -289,7 +306,7 @@ body {
 }
 
 #corpo_cad, #corpo_log {
-  max-width: 420px;
+  max-width: 800px;
   width: 100%;
   padding: 40px;
   background: white;
@@ -367,6 +384,7 @@ body {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  outline: none;
 }
 
 #corpo_cad input[type="submit"]:hover,
@@ -380,6 +398,11 @@ body {
 #corpo_log input[type="submit"]:active {
   transform: translateY(0);
   box-shadow: 0 4px 15px rgba(230, 159, 120, 0.2);
+}
+
+#corpo_cad input[type="submit"]:focus,
+#corpo_log input[type="submit"]:focus {
+  outline: none;
 }
 
 .auth-switch {
@@ -400,14 +423,14 @@ body {
   text-decoration: underline;
 }
 
-/* ===== FORMULÁRIOS (PEDIDO, ENCOMENDAS) ===== */
+/* ===== FORMULÁRIOS (PEDIDO, CADASTRO DE PRODUTOS) ===== */
 .main-container {
   max-width: 1200px;
   margin: 20px auto;
+  padding: 30px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 
 .form-header {
@@ -449,12 +472,14 @@ body {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 2px solid #e69f78;
+  text-align: left;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  text-align: left;
 }
 
 .field-group {
@@ -478,6 +503,8 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="time"],
+input[type="file"],
+input[type="number"],
 textarea,
 select,
 .form-input {
@@ -486,7 +513,7 @@ select,
   border: 2px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
   background-color: #f9f9f9;
 }
 
@@ -495,12 +522,15 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="time"]:focus,
+input[type="file"]:focus,
+input[type="number"]:focus,
 textarea:focus,
 select.form-input:focus,
 .form-input:focus {
   outline: none;
   border-color: #e69f78;
   background-color: white;
+  box-shadow: 0 0 0 3px rgba(230, 159, 120, 0.1);
 }
 
 textarea {
@@ -511,6 +541,77 @@ textarea {
 select.form-input,
 .form-input {
   cursor: pointer;
+}
+
+input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Botões gerais de formulário (submit e reset) */
+input[type="submit"],
+input[type="reset"],
+button[type="submit"],
+button[type="reset"] {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 140px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  outline: none;
+}
+
+input[type="submit"],
+button[type="submit"] {
+  background-color: #e69f78;
+  color: white;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: #d4926b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(230, 159, 120, 0.3);
+}
+
+input[type="submit"]:active,
+button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(230, 159, 120, 0.2);
+}
+
+input[type="submit"]:focus,
+button[type="submit"]:focus {
+  outline: none;
+}
+
+input[type="reset"],
+button[type="reset"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+input[type="reset"]:hover,
+button[type="reset"]:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+input[type="reset"]:active,
+button[type="reset"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+input[type="reset"]:focus,
+button[type="reset"]:focus {
+  outline: none;
 }
 
 .form-buttons {
@@ -531,6 +632,11 @@ select.form-input,
   cursor: pointer;
   transition: all 0.3s;
   min-width: 120px;
+  outline: none;
+}
+
+.form-button:focus {
+  outline: none;
 }
 
 .btn-submit {
@@ -551,6 +657,110 @@ select.form-input,
 .btn-reset:hover {
   background-color: #5a6268;
   transform: translateY(-2px);
+}
+
+/* ===== PÁGINA DE ENCOMENDAS - ESTILOS PARA O PHP EXISTENTE ===== */
+
+/* Estilização dos forms e textos da página de encomendas */
+.main-container form {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4a90e2;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  line-height: 2.2;
+  color: #666;
+  font-weight: normal !important;
+}
+
+.main-container form:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-left-color: #357abd;
+}
+
+.main-container form br {
+  display: block;
+  content: "";
+  line-height: 2.2;
+}
+
+/* Remove negrito de todo o texto */
+.main-container form,
+.main-container form *,
+.main-container b,
+.main-container strong {
+  font-weight: normal !important;
+}
+
+/* Estilização do texto dentro do form */
+.main-container form::before {
+  display: none;
+}
+
+/* Inputs submit dos forms de encomenda */
+.main-container input[type="submit"] {
+  padding: 8px 18px;
+  margin: 12px 6px 0 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+  outline: none;
+}
+
+.main-container input[type="submit"]:focus {
+  outline: none;
+}
+
+.main-container input[name="iniciar"] {
+  background: #28a745;
+  color: white;
+}
+
+.main-container input[name="iniciar"]:hover {
+  background: #218838;
+}
+
+.main-container input[name="cancelar"],
+.main-container input[name="cancelando"] {
+  background: #dc3545;
+  color: white;
+}
+
+.main-container input[name="cancelar"]:hover,
+.main-container input[name="cancelando"]:hover {
+  background: #c82333;
+}
+
+.main-container input[name="finalizar"] {
+  background: #007bff;
+  color: white;
+}
+
+.main-container input[name="finalizar"]:hover {
+  background: #0056b3;
+}
+
+/* Estilização dos textos de título */
+.main-container > :first-child {
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Inputs hidden */
+.main-container input[type="hidden"] {
+  display: none;
 }
 
 /* ===== ENCOMENDAS ===== */
@@ -607,11 +817,16 @@ select.form-input,
   text-decoration: none;
   min-width: 250px;
   justify-content: center;
+  outline: none;
 }
 
 .whatsapp-btn:hover {
   background-color: #946549;
   transform: translateY(-2px);
+}
+
+.whatsapp-btn:focus {
+  outline: none;
 }
 
 .contact-info {
@@ -648,6 +863,87 @@ select.form-input,
   font-weight: bold;
   color: #333;
   margin-bottom: 8px;
+}
+
+/* ===== ESTILOS PARA CONTROLE DE QUANTIDADE E DELETAR (home_adm.php) ===== */
+
+.quantity-form {
+  margin-bottom: 10px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.quantity-label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #e69f78;
+}
+
+.btn-edit-quantity {
+  padding: 5px 10px;
+  background-color: #e69f78;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  outline: none;
+}
+
+.btn-edit-quantity:hover {
+  background-color: #4CAF50;
+}
+
+.btn-edit-quantity:focus {
+  outline: none;
+}
+
+.btn-delete {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #e69f78;
+  color: white;
+  padding: 8px 0;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #946549;
+}
+
+.btn-delete:focus {
+  outline: none;
+}
+
+.btn-delete:active {
+  transform: translateY(1px);
 }
 
 /* ===== RESPONSIVIDADE ===== */
@@ -693,18 +989,175 @@ select.form-input,
   
   .main-container {
     margin: 20px;
+    padding: 20px;
+  }
+  
+  .main-container form {
+    padding: 20px;
   }
   
   #corpo_cad, #corpo_log {
     margin: 20px;
     padding: 20px;
+    max-width: 100%;
   }
   
   #titulo_cad, #titulo_log {
     margin-top: 0;
+    font-size: 20px;
   }
   
   .contact-content {
     padding: 30px 20px;
   }
+  
+  input[type="submit"],
+  input[type="reset"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+/* ===== ESTILOS CARRINHO (cart.php) ===== */
+
+.cart-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-table th {
+    background-color: #f9f9f9;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.cart-table tr:last-child td {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.btn-remove {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #dc3545; /* Vermelho para remover */
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-remove:hover {
+    background-color: #c82333;
+}
+
+.cart-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.cart-footer .btn-order {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* Estilo para a mensagem de status (box) */
+.box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.box[style*="color:red"] {
+    background-color: #f8d7da;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb;
+}
+
+.box:not([style*="color:red"]) {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cart-table thead {
+        display: none; /* Oculta o cabeçalho da tabela em telas pequenas */
+    }
+
+    .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .cart-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .cart-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #e69f78;
+    }
+    
+    .cart-table td:nth-of-type(1)::before { content: "Produto"; }
+    .cart-table td:nth-of-type(2)::before { content: "Descrição"; }
+    .cart-table td:nth-of-type(3)::before { content: "Preço"; }
+    .cart-table td:nth-of-type(4)::before { content: "Imagem"; }
+    .cart-table td:nth-of-type(5)::before { content: "Ação"; }
+
+    .cart-item-image {
+        float: right;
+    }
+
+    .cart-footer {
+        text-align: center;
+    }
 }
