@@ -17,10 +17,9 @@
         </div>
         
         <div class="header-right">
-            <a href="home.html" class="btn">Home</a>
+            <a href="home.php" class="btn">Home</a>
             <a href="fale_conosco.html" class="btn">Fale Conosco</a>
-            <a href="pedido.html" class="btn">Realizar Pedido</a>
-            <a href="encomendas.html" class="btn">Encomendas feitas</a>
+
             
         </div>
           
@@ -28,8 +27,9 @@
     </header>
     <div id="titulo_cad">
     <p>Realize o cadastro da sua conta:</p>
-    <form action="cadastro.php" method="post">
+    <form>
         <div id="corpo_cad">
+            <form action="cadastrar_produto.php" method="POST"></form>
             <div class="form-section">
                 <h3>Dados Pessoais</h3>
                 <div class="form-grid">
@@ -92,6 +92,8 @@
 
         <br>
         <input type="submit" name="cadastrar" id="cadastrar" value="cadastrar">
+        <br>
+        <button type="button" name="Limpar" id="limpar" value="Limpar"></button>
         </div>
     </form>
 </div>
