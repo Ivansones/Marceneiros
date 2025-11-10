@@ -1,8 +1,17 @@
 <?php
 session_start();
-$connect = mysql_connect('localhost','root','');
-$db = mysql_select_db('marcenaria');
 
+// Use 127.0.0.1 and the correct port
+$host = '127.0.0.1:3306'; // change 3307 to the port you set in my.ini
+$user = 'root';
+$pass = '';           // use the password you set in my.ini
+$db   = 'marcenaria';
+
+// Connect to MySQL
+$connect = mysql_connect($host, $user, $pass) or die("Erro de conexão: " . mysql_error());
+
+// Select database
+mysql_select_db($db, $connect) or die("Erro ao selecionar o banco: " . mysql_error());
 
 if (!$connect) {
     die("Erro de conexão: " . mysql_connect());
@@ -24,7 +33,7 @@ if (isset($_POST['verificar'])){
     {
         echo "<script language ='javascript' type='text/javascript'>
         alert ('login e/ou senha incorretos');
-        window.location.href ='login.html';
+        window.location.href ='login_no_log.html';
         </script>";
     }
     else 
@@ -59,5 +68,8 @@ if (isset($_POST['verificar'])){
         }
     }
 }
+
+
+
 
 ?>
