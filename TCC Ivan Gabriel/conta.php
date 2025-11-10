@@ -55,11 +55,10 @@ if (isset($_POST['atualizar'])) {
         </div>
         
         <div class="header-right">
-            <a href="home.php" class="btn">Sua conta</a>
+            <a href="home.php" class="btn">Home</a>
             <a href="pedido.html" class="btn">Realizar Pedido</a>
             <a href="fale_conosco.html" class="btn">Fale Conosco</a>
             <a href="encomendass.php" class="btn">Encomendas Feitas</a>
-            <a href="cadastro.html" class="btn">Cadastrar-se</a>
             <a href="logout.php" class="btn">logout</a>
         </div>
           
