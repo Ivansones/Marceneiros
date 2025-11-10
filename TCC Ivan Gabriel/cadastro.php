@@ -1,9 +1,9 @@
 <?php
-$connect = mysql_connect('localhost', 'root', '');
+$connect = mysql_connect('localhost','root','');
 $db = mysql_select_db('marcenaria');
 
 if (!$connect) {
-    die("Erro de conexão");
+    die("Erro de conexão: " . mysql_connect());
 }
 
 if (isset($_POST['cadastrar'])){
@@ -33,20 +33,20 @@ if (isset($_POST['cadastrar'])){
     if($resultado==TRUE){
         echo "<script language ='javascript' type='text/javascript'>
         alert ('Cadastrado com sucesso');
-        window.location.href ='home.html';
+        window.location.href ='home_no_log.php';
         </script>";
     }
     else{
         echo "<script language ='javascript' type='text/javascript'>
         alert ('Houve um erro ao cadastrara');
-        window.location.href ='cadastro.html';
+        window.location.href ='cadastro_no_log.html';
         </script>";
     }
     }
     else {
         echo "<script language ='javascript' type='text/javascript'>
         alert ('Conta ja foi cadastrada, tente outra');
-        window.location.href ='cadastro.html';
+        window.location.href ='cadastro_no_log.html';
         </script>";
     }
 }
