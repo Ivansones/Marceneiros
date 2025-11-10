@@ -6,5 +6,5 @@
   session_destroy();
 
 
-  header('location:home_no_log.html');
+  header('location:home_no_log.php');
 ?>
