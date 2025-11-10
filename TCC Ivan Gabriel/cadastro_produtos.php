@@ -51,7 +51,8 @@ if (isset($_POST['cadastrar'])) {
     $resultado = mysql_query($sql);
     
     if ($resultado) {
-        echo "<script>alert('Produto cadastrado com sucesso!'); window.location.href='cadastro_produto.html';</script>";
+        echo "<script>alert('Produto cadastrado com sucesso!');
+        window.location.href='cadastro_produtos.html';</script>";
     } else {
         echo "<script>alert('Erro ao cadastrar produto: " . mysql_error() . "');</script>";
     }
