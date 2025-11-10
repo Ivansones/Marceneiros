@@ -20,7 +20,7 @@ if (isset($_POST['id']) && $_POST['id']!=""){
 
     if(empty($_SESSION["shopping_cart"])) {
         $_SESSION["shopping_cart"] = $cartArray;
-        $status = "<div class='box'>Produto foi add ao carrinho !</div>";
+        $status = "<div class='box'>Produto foi adicionados ao carrinho !</div>";
         }
         else{
         $array_keys = array_keys($_SESSION["shopping_cart"]);
@@ -31,7 +31,7 @@ if (isset($_POST['id']) && $_POST['id']!=""){
         }
         else {
         $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
-        $status = "<div class='box'>Produto  foi add ao carrinho!</div>";
+        $status = "<div class='box'>Produto  foi adicionado ao carrinho!</div>";
         }
     
         }
@@ -48,19 +48,17 @@ if (isset($_POST['id']) && $_POST['id']!=""){
     <link rel="stylesheet" href="estiliza.css">
 </head>
 <body>
-    <div class="cart_div">
-        <a href="cart.php">
-            <img src="carrinho.png" height="50" width="50" alt="Carrinho"/>Carrinho
-            <span>
-            <?php  
-            if(!empty($_SESSION["shopping_cart"])) {
-                $cart_count = count(array_keys($_SESSION["shopping_cart"]));   
-                echo $cart_count;
-            }
-            ?>
-            </span>
-        </a>
-    </div>
+<div class="cart_div">
+    <a href="cart.php" class="cart-link">
+        <img src="carrinho.png" alt="Carrinho" class="cart-icon">
+        <span class="cart-text">Carrinho</span>
+        <?php if(!empty($_SESSION["shopping_cart"])): ?>
+            <span class="cart-count"><?php echo count($_SESSION["shopping_cart"]); ?></span>
+        <?php else: ?>
+            <span class="cart-count" style="background-color: #777;">0</span>
+        <?php endif; ?>
+    </a>
+</div>
 
     <header class="header">
         <div class="logo">
