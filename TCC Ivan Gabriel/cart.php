@@ -123,7 +123,7 @@ if (isset($_POST["comprar"])){
             </table>
             <?php
             }else{
-                echo "<div class='empty-state'><h3>Seu carrinho está vazio!</h3><p>Adicione produtos da loja para vê-los aqui.</p></div>";
+                echo "<div class='empty-state'><h3>Seu carrinho esta vazio!</h3><p>Adicione produtos da loja para ve-los aqui.</p></div>";
             }
             ?>
         </div>
