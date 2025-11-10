@@ -71,17 +71,17 @@ if (isset($_POST['retirar'])){
 <?php
 if ($user_tipo == "usuario" ){
         echo "<div class='header-right'>".
+            "<a href='conta.php' class='btn'>Sua conta</a>".
             "<a href='pedido.html' class='btn'>Realizar Pedido</a>".
             "<a href='fale_conosco.html' class='btn'>Fale Conosco</a>".
             "<a href='home.php' class='btn'>Home</a>".
-            "<a href='logout.php' class='btn'>logout</a>".
-            "<a href='cadastro.html' class='btn'>Cadastrar-se</a>";
+            "<a href='logout.php' class='btn'>logout</a>";
           echo "</div>";
         }
 else{
         echo "<div class='header-right'>".
-            "<a href='cadastro_produtos.html' class='btn'>Cadastra produtos</a>".
             "<a href='compras.php' class='btn'>Vendas</a>".
+            "<a href='cadastro_produtos.html' class='btn'>Cadastro de produtos</a>".
             "<a href='home_adm.php' class='btn'>Home</a>".
             "<a href='logout.php' class='btn'>logout</a>";
           echo "</div>";
