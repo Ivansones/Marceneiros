@@ -61,8 +61,8 @@ if ($seleciona_produto) {
         </div>
         
         <div class="header-right">
-            <a href="cadastro_produto.html" class="btn">Cadastro de produtos</a>
             <a href="compras.php" class="btn">Vendas</a>
+            <a href="cadastro_produtos.html" class="btn">Cadastro de produtos</a>
             <a href="encomendass.php" class="btn">Encomendas Feitas</a>
             <a href="logout.php" class="btn">logout</a>
         </div>
